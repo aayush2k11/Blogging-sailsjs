@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title My Blogs
+
+    // Viewport mobile tag for sensible mobile support
+    meta(name="viewport",content="width=device-width, initial-scale=1, maximum-scale=1")
+    meta( charset='utf-8' )
+    meta( http-equiv='X-UA-Compatible', content='IE=edge' )
+    meta( name='description', content='Baking Bootstrap Snippets with Jade' )
+    //- Bootswatch Theme
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css", rel="stylesheet")
+    block styles
+
+  body
+    nav(class="navbar navbar-default")
+        div(class="container-fluid")
+            div(class="navbar-header")
+                a(class="navbar-brand", href="/home") Home
+            div(class="collapse navbar-collapse", id="bs-example-navbar-collapse-1")
+                if req.user
+                    ul(class="nav navbar-nav")
+                        li(class="active")
+                            a Hello #{req.user.username}!
+                    ul(class="nav navbar-nav navbar-right")
+                        li
+                            a(href="/logout") Log Out
+                else
+                    ul(class="nav navbar-nav")
+                        li(class="active")
+                            a(href="/login") Login
+                        li(class="active")
+                            a(href="/register") Sign Up
+
+    block content
+
+
+    // The linker searches for this tag and adds js.  If there's no linker, we point to sails.io.js
+    // SCRIPTS
+    script(src="/js/dependencies/sails.io.js")
+    // SCRIPTS END
+

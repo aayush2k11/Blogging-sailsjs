@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  div.page-header
+    h1 Sign Up Details
+  if errors
+    div #{errors}
+  form(role="form", action='/auth/local/register', method="post", class="form-horizontal")
+    div(class="form-group")
+      label(class="col-sm-2 control-label") Name
+      div(class="col-sm-6")
+        input(type="text", class="form-control", placeholder="Name", name="username")
+    div(class="form-group")
+      label(class="col-sm-2 control-label") Email ID
+      div(class="col-sm-6")
+        input(type="text", class="form-control", placeholder="Email", name="email")
+    div(class="form-group")
+      label(class="col-sm-2 control-label") Password
+      div(class="col-sm-6")
+        input(type="password", class="form-control", placeholder="Password", name="password")
+    div(class="form-group")
+      div(class="col-sm-offset-2 col-sm-10")
+        button(type="submit",class="btn btn-default") Sign Up
+
